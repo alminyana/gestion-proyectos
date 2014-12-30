@@ -4,9 +4,11 @@ class CategoriasController extends \BaseController {
 
 	public function crear()
 	{
+		$data = Input::all();
+		//$data = $_GET['data'];
+		//var_dump($data);
 		if (Request::ajax()) {
-			$nombre = $_GET['nombre'];
-			dd($nombre);
+			return Response::json(array('cats'=>$data));
 			// $obs = DB::table('productos')->where('id_subcateg',$sub)->select('id','id_subcateg')->get();
 			// return Response::json(array('obs'=>$obs));
 		}

@@ -32,8 +32,8 @@ Route::resource('usuaris', 'UsuarisController');
 Route::resource('proyectos', 'ProyectosController');
 Route::resource('categorias', 'CategoriasController');
 
-App::missing(function($exception)
-{
-	return View::make('home.index-log');
-});
+// App::missing(function($exception)
+// {
+// 	return View::make('home.index-log');
+// });
 

@@ -1,15 +1,24 @@
 $(document).ready(function(){
 	
-	$('#anadir-cat').click(function(){
-		var dato = document.getElementById('nombre-cat');
+	$('#formu-categorias').submit(function(e){
+		e.preventDefault();
+		var dato = document.getElementById('categoria');
+		var valor = dato.value;
+		//alert(valor);
 		$.ajax ({
 			type: 'POST',
 			url: 'categorias/crear',
-			data: {nombre: dato.value},
+			data: $('#formu-categorias').serialize(),
+			//data: valor,
 			dataType: 'json',
-			beforeSend: function(){},
+			//beforeSend: function(){},
 			success: function(response){
-				console.log('ok');
+				console.log(data);
+				if(response) {
+					for (data in respuesta.cats) {
+						console.log(respuesta.cats[data]);
+					}
+				}
 			}
 		})
 	});

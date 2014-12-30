@@ -51,16 +51,18 @@
                 <div class="modal-body">
                     <h4 class="text-info">Añade una Categoría</h4>
 					<div class="input-group">
-					 <input name="nombre-cat" type="text" class="form-control" placeholder="Search for..." id="nombre-cat" required>
+					{{Form::open(array('url'=>'', 'id'=>'formu-categorias')) }}
+
+					 <input name="categoria" type="text" class="form-control" placeholder="Categoría..." id="categoria" required>
 
 
 				      <span class="input-group-btn">
 				        <button class="btn btn-primary" type="submit" id="anadir-cat">Añadir</button>
 				      </span>
-				     
+				     {{ Form::close() }}
 				    </div>
                     <p class="text-warning">Lista de Categorías</p>
-               
+               			<div id="mostrar-cats"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
