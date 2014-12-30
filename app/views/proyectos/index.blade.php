@@ -1,11 +1,25 @@
 @extends('layout.main-log')
 @section('content')
 <style>
+#info {
+	margin-top: .7em;
+}
+.label {
+	padding: .7em;
+}
+#Modal-segundo .modal-dialog {
+	width: 300px;
+	margin-top: 90px;
+}
+.input-group {
+	margin: 0 1em;
+}
 	form {
-		margin-bottom: 1em;
+		margin-bottom: 2em;
 	}
 	#mostrar-cats {
 		width: 100%;
+		height: 100px;
 		overflow: scroll;
 		padding: 1em;
 	}
@@ -78,6 +92,7 @@
 				    {{ Form::close() }}
                     <h4 class="text-warning">Lista de Categorías</h4>
                			<div id="mostrar-cats"></div>
+               			<h5 class="text-info">Marca una Categoría para eliminarla</h5>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -85,4 +100,25 @@
             </div>
         </div>
     </div>
+
+	<!-- Modal II  para confirmar borrado etiqueta -->
+  <div id="Modal-segundo" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-danger">Confirmar Borrado</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-primary">Seguro que quiere eliminar la categoría</p>
+			<span class="label label-danger esta center"></span>
+			<p id="info" class="text-info">Esta acción no se puede deshacer</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="cat-borrar" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @stop

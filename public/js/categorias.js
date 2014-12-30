@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	/*
 		Método ajax para guardar la nueva categoria en BD
 		Response:: capturar todas las categorias de la BD y refrescar
@@ -15,14 +16,11 @@ $(document).ready(function(){
 			dataType: 'json',
 			//beforeSend: function(){},
 			success: function(response){
-				/*if(response) {
-					contenido += '<span class="label label-danger">'+ response.cats +'<span id="boton-cat" class="glyphicon glyphicon-remove"></span></span>';
-				}
-				$('#mostrar-cats').html(contenido);*/
+				//$('#formu-categorias').reset();
 				if(response) {
 					for (one in response.cats) {
 						//console.log(response.cats[one].nombre_cat);
-						contenido += '<span class="label label-danger">'+ response.cats[one].nombre_cat +'<span id="boton-cat" class="glyphicon glyphicon-remove"></span></span>';
+						contenido += '<span id="'+response.cats[one].id+'" href="#Modal-segundo" data-toggle="modal" class="label label-danger">'+ response.cats[one].nombre_cat +'</span>';
 					}
 				}
 				$('#mostrar-cats').html(contenido);
@@ -45,7 +43,7 @@ $(document).ready(function(){
 				if(response) {
 					for (one in response.cats) {
 						//console.log(response.cats[one].nombre_cat);
-						content += '<span id="'+response.cats[one].id+'" class="label label-danger">'+ response.cats[one].nombre_cat +'<span id="boton-cat" class="glyphicon glyphicon-remove"></span></span>';
+						content += '<span id="'+response.cats[one].id+'" class="label label-danger">'+ response.cats[one].nombre_cat +'</span>';
 					}
 				}
 				$('#mostrar-cats').html(content);
@@ -57,8 +55,18 @@ $(document).ready(function(){
 		consulta ajax para eliminar dicha categoria de la BD
 	*/
 	$(document).on('click', '.label', function (event){
+		event.preventDefault();
 		console.log(event.target.id);
-		$esta = event.target.id;
+		$identif = event.target.id;
+		$categoria = $('#'+event.target.id).text();
+		//console.log($categoria);
+		
+		$('#Modal-segundo').modal();
+		$('.esta').text($categoria);
+
+		$(document).on('click', '#cat-borrar', function (){
+		//console.log(event.target.id);
+		$esta = $identif;
 		var content="";
 		$.ajax({
 			type: 'POST',
@@ -69,12 +77,17 @@ $(document).ready(function(){
 				if(response) {
 					for (one in response.cats) {
 						//console.log(response.cats[one].nombre_cat);
-						content += '<span id="'+response.cats[one].id+'" class="label label-danger">'+ response.cats[one].nombre_cat +'<span id="boton-cat" class="glyphicon glyphicon-remove"></span></span>';
+						content += '<span id="'+response.cats[one].id+'" class="label label-danger">'+ response.cats[one].nombre_cat +'</span>';
 					}
 				}
 				$('#mostrar-cats').html(content);
 			}
 		});
+	});
 	}); 
+
+
+	
+	
 
 });
