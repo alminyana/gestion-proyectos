@@ -16,8 +16,9 @@ class CreateCategoriasTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nombre_cat');
-			$table->integer('id_proyecto');
+			$table->integer('id_proyecto')->unsigned()->index()->nullable();
 			$table->timestamps();
+			$table->foreign('id_proyecto')->references('id')->on('proyectos')->onDelete('cascade');
 		});
 	}
 
