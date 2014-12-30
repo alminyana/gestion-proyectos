@@ -11,12 +11,12 @@ class UsuarisTableSeeder extends Seeder {
 		Usuari::create([
 			'nom' 	=> 'enric',
 			'mail'	=> 'enric@eideo.es',
-			'password' => 'soyenric'
+			'password' => Hash::make('soyenric')
 		]);
 		Usuari::create([
 			'nom' 	=> 'beto',
 			'mail'	=> 'beto@eideo.es',
-			'password' => 'soybeto'
+			'password' => Hash::make('soybeto')
 		]);
 		foreach(range(1, 2) as $index)
 		{

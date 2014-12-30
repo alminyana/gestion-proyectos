@@ -1,0 +1,1 @@
+C:\xampp\htdocs\sitesLaravel\eideo_app\app/views/categorias/show.blade.php

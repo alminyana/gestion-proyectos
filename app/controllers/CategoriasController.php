@@ -1,21 +1,31 @@
 <?php
 
-class ProyectosController extends \BaseController {
+class CategoriasController extends \BaseController {
+
+	public function crear()
+	{
+		if (Request::ajax()) {
+			$nombre = $_GET['nombre'];
+			dd($nombre);
+			// $obs = DB::table('productos')->where('id_subcateg',$sub)->select('id','id_subcateg')->get();
+			// return Response::json(array('obs'=>$obs));
+		}
+	}
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /proyectos
+	 * GET /categorias
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		return View::make('proyectos.index');
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /proyectos/create
+	 * GET /categorias/create
 	 *
 	 * @return Response
 	 */
@@ -26,7 +36,7 @@ class ProyectosController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /proyectos
+	 * POST /categorias
 	 *
 	 * @return Response
 	 */
@@ -37,7 +47,7 @@ class ProyectosController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /proyectos/{id}
+	 * GET /categorias/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -49,7 +59,7 @@ class ProyectosController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /proyectos/{id}/edit
+	 * GET /categorias/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -61,7 +71,7 @@ class ProyectosController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /proyectos/{id}
+	 * PUT /categorias/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -73,7 +83,7 @@ class ProyectosController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /proyectos/{id}
+	 * DELETE /categorias/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

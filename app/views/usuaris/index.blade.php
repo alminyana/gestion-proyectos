@@ -1,1 +1,10 @@
-C:\xampp\htdocs\sitesLaravel\eideo_app\app/views/usuaris/index.blade.php
+@extends('layout.main-log')
+<style>
+</style>
+@section('content')
+	<div class="container">
+		hola index usuaris
+		{{$usus}}
+	</div>
+
+@stop
