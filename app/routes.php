@@ -24,7 +24,8 @@ Route::get('usuaris/logout', 'UsuarisController@logout');
 
 // ------------------       CATEGORIAS       -----------------------
 Route::post('categorias/crear', 'CategoriasController@crear');
-
+Route::get('categorias/listar', 'CategoriasController@listar');
+Route::post('categorias/borraruna', 'CategoriasController@borraruna');
 
 
 //RUTAS RESOURCES

@@ -1,14 +1,46 @@
 <?php
 
 class CategoriasController extends \BaseController {
+	public function borraruna()
+	{
+		$id = $_POST['categoria'];
+		$categoria = Categorium::find($id);
+		$categoria->delete();
 
+		$todas = Categorium::all();
+		return Response::json(array('cats'=>$todas));
+	}
+	/*
+		Método que se llama al cargar el modal de categorias
+		consulta ajax que devuelve todas las categorias de la BD
+	*/
+	public function listar()
+	{
+		if (Request::ajax()) {
+			$todas = Categorium::all();
+			return Response::json(array('cats'=>$todas));
+		}
+	}
+
+	/**
+	* Método llamado por consulta Ajax.
+	* Guarda la nueva categoria en BD y devuelve response 
+	* con todas las categorias de la BD
+	*/
 	public function crear()
 	{
-		$data = Input::all();
-		//$data = $_GET['data'];
-		//var_dump($data);
+		$data = Input::get('categoria');
 		if (Request::ajax()) {
-			return Response::json(array('cats'=>$data));
+			if ($data) {
+				$categ = new Categorium;
+				$categ->nombre_cat = $data;
+				$categ->save();
+
+				$categorias = Categorium::all();
+
+				return Response::json(array('cats'=>$categorias));
+			}
+
 			// $obs = DB::table('productos')->where('id_subcateg',$sub)->select('id','id_subcateg')->get();
 			// return Response::json(array('obs'=>$obs));
 		}

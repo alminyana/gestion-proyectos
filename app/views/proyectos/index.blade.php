@@ -1,5 +1,23 @@
 @extends('layout.main-log')
 @section('content')
+<style>
+	form {
+		margin-bottom: 1em;
+	}
+	#mostrar-cats {
+		width: 100%;
+		overflow: scroll;
+		padding: 1em;
+	}
+	span.label {
+		margin: .5em .5em;
+		cursor: pointer;
+	}
+	span.glyphicon {
+		margin-left: .5em;
+		
+	}
+</style>
     {{-- HTML::script('js/categorias.js') --}}
     
 	<div class="container index-proyectos">
@@ -10,7 +28,7 @@
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pull-right">
 					<div class="btn-proyectos">
-						<a class="btn btn-primary" href="#myModal" data-toggle="modal">Categorías</a>
+						<a id="boton-modal" class="btn btn-primary" href="#myModal" data-toggle="modal">Categorías</a>
 
 						<a class="btn btn-danger">Nuevo Proyecto</a>
 					</div>				
@@ -50,23 +68,19 @@
                 </div>
                 <div class="modal-body">
                     <h4 class="text-info">Añade una Categoría</h4>
+                    {{Form::open(array('url'=>'', 'class'=>'','id'=>'formu-categorias')) }}
 					<div class="input-group">
-					{{Form::open(array('url'=>'', 'id'=>'formu-categorias')) }}
-
 					 <input name="categoria" type="text" class="form-control" placeholder="Categoría..." id="categoria" required>
-
-
 				      <span class="input-group-btn">
 				        <button class="btn btn-primary" type="submit" id="anadir-cat">Añadir</button>
-				      </span>
-				     {{ Form::close() }}
+				      </span>  
 				    </div>
-                    <p class="text-warning">Lista de Categorías</p>
+				    {{ Form::close() }}
+                    <h4 class="text-warning">Lista de Categorías</h4>
                			<div id="mostrar-cats"></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button id="bot" type="button" class="btn btn-danger">Guardar</button>
                 </div>
             </div>
         </div>

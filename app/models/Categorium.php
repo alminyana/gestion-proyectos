@@ -1,5 +1,6 @@
 <?php
 
 class Categorium extends \Eloquent {
-	protected $fillable = [];
+	protected $table = 'categorias';
+	protected $fillable = ['nombre_cat'];
 }
